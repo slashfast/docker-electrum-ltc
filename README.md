@@ -20,7 +20,7 @@
 
 #### docker-compose
 
-[docker-compose.yml](https://github.com/slashfast/docker-electrum-ltc/blob/master/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
+[docker-compose.yml](https://github.com/slashfast/docker-electrum-ltc/blob/main/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
 
 ```bash
 git clone https://github.com/slashfast/docker-electrum-ltc.git
@@ -38,4 +38,4 @@ Always link electrum daemon to containers or bind to localhost directly and not 
 
 ## License
 
-See [LICENSE](https://github.com/slashfast/docker-electrum-ltc/blob/master/LICENSE)
+See [LICENSE](https://github.com/slashfast/docker-electrum-ltc/blob/main/LICENSE)
