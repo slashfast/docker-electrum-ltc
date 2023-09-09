@@ -34,7 +34,7 @@ curl --data-binary '{"id":"1","method":"getinfo"}' http://electrum-ltc:changeme@
 
 :exclamation:**Warning**:exclamation:
 
-Always link electrum daemon to containers or bind to localhost directly and not expose 7000 port for security reasons.
+Always link electrum-ltc daemon to containers or bind to localhost directly and not expose 7000 port for security reasons.
 
 ## License
 
