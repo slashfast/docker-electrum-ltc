@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+    tor-socks-proxy:
+        container_name: tor-socks-proxy-ltc
+        image: peterdavehello/tor-socks-proxy:latest
+        ports:
+            - 127.0.0.1:9150:9150
+        restart: unless-stopped
+        networks:
+            - main
+    electrum-ltc:
+        build:
+            context: .
+            args:
+                - ELECTRUM_LTC_VERSION=4.2.2.1
+        ports:
+            - 127.0.0.1:7000:7000
+        restart: unless-stopped
+        environment:
+            - ELECTRUM_LTC_USER=electrum-ltc
+            - ELECTRUM_LTC_PASSWORD=changeme
+            - ELECTRUM_LTC_NETWORK=mainnet
+            - ELECTRUM_LTC_PROXY=socks5:tor-socks-proxy:9150
+        networks:
+            - main
+        depends_on:
+            tor-socks-proxy:
+                condition: service_healthy
+        container_name: electrum-ltc
+        image: slashfast/docker-electrum-ltc-daemon
+        volumes:
+            - ../electrum-ltc:/data
+
+networks:
+    main:
