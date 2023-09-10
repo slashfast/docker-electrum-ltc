@@ -23,6 +23,7 @@ RUN adduser -D $ELECTRUM_LTC_USER && \
     gpg --verify Electrum-LTC-${ELECTRUM_LTC_VERSION}.tar.gz.asc Electrum-LTC-${ELECTRUM_LTC_VERSION}.tar.gz && \
     echo -e "**************************\n GPG VERIFIED OK\n**************************" && \
     pip3 install cryptography scrypt Electrum-LTC-${ELECTRUM_LTC_VERSION}.tar.gz && \
+    chmod +x /contrib/* && \
     ./contrib/make_libsecp256k1.sh && \
     rm -r contrib Electrum-LTC-${ELECTRUM_LTC_VERSION}.tar.gz Electrum-LTC-${ELECTRUM_LTC_VERSION}.tar.gz.asc && \
     apk del build-dependencies && \
