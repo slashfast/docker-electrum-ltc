@@ -34,7 +34,7 @@ RUN adduser -D $ELECTRUM_LTC_USER && \
 	    ${ELECTRUM_LTC_HOME}/.electrum-ltc/regtest/wallets/ \
 	    ${ELECTRUM_LTC_HOME}/.electrum-ltc/simnet/wallets/ && \
     ln -sf ${ELECTRUM_LTC_HOME}/.electrum-ltc/ /data && \
-	chown -R ${ELECTRUM_LTC_USER} ${ELECTRUM_LTC_HOME}/.electrum-ltc /data
+    chown -R ${ELECTRUM_LTC_USER} ${ELECTRUM_LTC_HOME}/.electrum-ltc /data && \
     chmod +x /usr/local/bin/docker-entrypoint.sh && \
 	
 USER $ELECTRUM_LTC_USER
