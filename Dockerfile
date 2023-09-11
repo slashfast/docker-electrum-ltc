@@ -9,6 +9,7 @@ ENV ELECTRUM_LTC_HOME /home/$ELECTRUM_LTC_USER
 ENV ELECTRUM_LTC_NETWORK mainnet
 
 COPY contrib /contrib/
+COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN adduser -D $ELECTRUM_LTC_USER && \
     mkdir -p /data ${ELECTRUM_LTC_HOME} && \
@@ -34,11 +35,11 @@ RUN adduser -D $ELECTRUM_LTC_USER && \
 	    ${ELECTRUM_LTC_HOME}/.electrum-ltc/simnet/wallets/ && \
     ln -sf ${ELECTRUM_LTC_HOME}/.electrum-ltc/ /data && \
 	chown -R ${ELECTRUM_LTC_USER} ${ELECTRUM_LTC_HOME}/.electrum-ltc /data
+    chmod +x /usr/local/bin/docker-entrypoint.sh && \
 	
 USER $ELECTRUM_LTC_USER
 WORKDIR $ELECTRUM_LTC_HOME
 VOLUME /data
 EXPOSE 7000
 
-COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
